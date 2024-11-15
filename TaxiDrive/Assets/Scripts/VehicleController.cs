@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class VehicleController : MonoBehaviour
 {
-    public float speed = 5.0f;
+    public float speed = 2.5f;
     public float rotationSpeed = 1.0f;
     public float wheelRotationSpeed = 300.0f;
     public float maxSteeringAngle = 30.0f;
