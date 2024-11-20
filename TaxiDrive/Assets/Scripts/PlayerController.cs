@@ -1,8 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
-[RequireComponent(typeof(VehicleController))]
 public class PlayerController : MonoBehaviour
 {
     private VehicleController vehicleController;
@@ -14,11 +14,8 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        float moveHorizontal = Input.GetAxis("Horizontal");
-        float moveVertical = Input.GetAxis("Vertical");
-
-        Vector3 direction = new Vector3(moveHorizontal, 0.0f, moveVertical);
-
-        vehicleController.Move(direction);
+        float gasInput = Input.GetAxis("Vertical");
+        float steeringInput = Input.GetAxis("Horizontal");
+        vehicleController.SetInputs(gasInput, steeringInput);
     }
 }
