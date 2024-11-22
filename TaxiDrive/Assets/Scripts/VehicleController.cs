@@ -15,31 +15,13 @@ public class VehicleController : MonoBehaviour
     private float steeringInput;
     private float brakeInput;
 
-    public Transform Wheel_FL;
-    public Transform Wheel_FR;
-    public Transform Wheel_RL;
-    public Transform Wheel_RR;
-
     private Rigidbody rb;
-    private WheelColliders wheelColliders;
-    private WheelMeshes wheelMeshes;
+    public WheelColliders wheelColliders;
+    public WheelMeshes wheelMeshes;
 
     void Start()
     {
         rb = gameObject.GetComponent<Rigidbody>();
-
-        wheelColliders = new WheelColliders();
-        wheelMeshes = new WheelMeshes();
-
-        wheelColliders.wheelFR = Wheel_FR.GetComponent<WheelCollider>();
-        wheelColliders.wheelFL = Wheel_FL.GetComponent<WheelCollider>();
-        wheelColliders.wheelRR = Wheel_RR.GetComponent<WheelCollider>();
-        wheelColliders.wheelRL = Wheel_RL.GetComponent<WheelCollider>();
-
-        wheelMeshes.wheelFR = Wheel_FR.GetComponent<MeshRenderer>();
-        wheelMeshes.wheelFL = Wheel_FL.GetComponent<MeshRenderer>();
-        wheelMeshes.wheelRR = Wheel_RR.GetComponent<MeshRenderer>();
-        wheelMeshes.wheelRL = Wheel_RL.GetComponent<MeshRenderer>();
     }
 
     void Update()
