@@ -381,6 +381,7 @@ GameObject:
   - component: {fileID: 9031719103029147089}
   - component: {fileID: 1888813715407027121}
   - component: {fileID: 6651665286800607219}
+  - component: {fileID: 2304602374072344684}
   m_Layer: 0
   m_Name: Player_Taxi
   m_TagString: Untagged
@@ -450,6 +451,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  turnSensitivity: 3
   wheelColliders:
     wheelFR: {fileID: 842554634703380167}
     wheelFL: {fileID: 3882162479508792221}
@@ -499,6 +501,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28c4350cb69796d4cb68345f4ec79022, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2304602374072344684
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7649626134441907428}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88528b102e1a27e44955b533dccd2e46, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  carRigidbody: {fileID: 1888813715407027121}
+  speedText: {fileID: 0}
 --- !u!1 &7649626134441907430
 GameObject:
   m_ObjectHideFlags: 0
