@@ -425,8 +425,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60951c4a0b4d3cc49b49c47e8374de19, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  motorPower: 10000
-  brakePower: 1000000
+  motorPower: 100000
+  brakePower: 10000000
   steeringCurve:
     serializedVersion: 2
     m_Curve:
@@ -451,7 +451,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  turnSensitivity: 3
+  turnSensitivity: 1
   wheelColliders:
     wheelFR: {fileID: 842554634703380167}
     wheelFL: {fileID: 3882162479508792221}
