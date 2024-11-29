@@ -204,6 +204,9 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  turnSensitivity: 1
+  maxDecelerationFactor: 2500
+  timeDecelerationFactor: 10
   wheelColliders:
     wheelFR: {fileID: 358050407912899149}
     wheelFL: {fileID: 6393317198818916378}
@@ -241,7 +244,7 @@ Rigidbody:
   m_GameObject: {fileID: 796919624059067017}
   serializedVersion: 4
   m_Mass: 1000
-  m_Drag: 0
+  m_Drag: 0.05
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}

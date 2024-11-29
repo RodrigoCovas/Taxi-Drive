@@ -9,13 +9,15 @@ public class VehicleController : MonoBehaviour
     public float brakePower;
     public AnimationCurve steeringCurve;
     public float turnSensitivity;
-    public float decelerationFactor;
+    public float maxDecelerationFactor;
+    public float timeDecelerationFactor;
 
     private float speed;
     private float slipAngle;
     private float gasInput;
     private float steeringInput;
     private float brakeInput;
+    private float decelerationTimer;
 
     private Rigidbody rb;
     public WheelColliders wheelColliders;
@@ -43,6 +45,11 @@ public class VehicleController : MonoBehaviour
 
         slipAngle = Vector3.Angle(transform.forward, rb.velocity - transform.forward);
 
+        if (gasInput != 0)
+        {
+            decelerationTimer = 0;
+        }
+
         //fixed code to brake even after going on reverse by Andrew Alex 
         float movingDirection = Vector3.Dot(transform.forward, rb.velocity);
         if (movingDirection < -0.5f && gasInput > 0)
@@ -61,7 +68,12 @@ public class VehicleController : MonoBehaviour
 
     void ApplyBrake()
     {
-        float decelerationBrake = gasInput == 0 ? decelerationFactor : 0;
+        if (gasInput == 0)
+        {
+            decelerationTimer += Time.deltaTime;
+        }
+
+        float decelerationBrake = Mathf.Lerp(0, maxDecelerationFactor, decelerationTimer/timeDecelerationFactor);
 
         wheelColliders.wheelFR.brakeTorque = brakeInput * brakePower * 0.7f + decelerationBrake;
         wheelColliders.wheelFL.brakeTorque = brakeInput * brakePower * 0.7f + decelerationBrake;

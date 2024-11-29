@@ -426,7 +426,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   motorPower: 100000
-  brakePower: 10000000
+  brakePower: 1000000
   steeringCurve:
     serializedVersion: 2
     m_Curve:
@@ -440,8 +440,8 @@ MonoBehaviour:
       inWeight: 0
       outWeight: 0
     - serializedVersion: 3
-      time: 80.28947
-      value: 21.50734
+      time: 80.55637
+      value: 21.552475
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -452,6 +452,8 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   turnSensitivity: 1
+  maxDecelerationFactor: 2500
+  timeDecelerationFactor: 10
   wheelColliders:
     wheelFR: {fileID: 842554634703380167}
     wheelFL: {fileID: 3882162479508792221}
@@ -471,7 +473,7 @@ Rigidbody:
   m_GameObject: {fileID: 7649626134441907428}
   serializedVersion: 4
   m_Mass: 1000
-  m_Drag: 0
+  m_Drag: 0.05
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}

@@ -619,8 +619,12 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8894933627932195508, guid: c5e0da4747ed81241b44e5fdbd81aefa, type: 3}
-      propertyPath: decelerationFactor
-      value: 25000
+      propertyPath: maxDecelerationFactor
+      value: 2500
+      objectReference: {fileID: 0}
+    - target: {fileID: 8894933627932195508, guid: c5e0da4747ed81241b44e5fdbd81aefa, type: 3}
+      propertyPath: timeDecelerationFactor
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -697,8 +701,8 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1888813715407027121, guid: 780a320632305454e89aa993737c5b96, type: 3}
-      propertyPath: m_Drag
-      value: 0.05
+      propertyPath: m_Mass
+      value: 1000
       objectReference: {fileID: 0}
     - target: {fileID: 2304602374072344684, guid: 780a320632305454e89aa993737c5b96, type: 3}
       propertyPath: speedText
@@ -748,33 +752,9 @@ PrefabInstance:
       propertyPath: m_Name
       value: Vehicle_Taxi_separate
       objectReference: {fileID: 0}
-    - target: {fileID: 7649626134441907428, guid: 780a320632305454e89aa993737c5b96, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 9031719103029147089, guid: 780a320632305454e89aa993737c5b96, type: 3}
-      propertyPath: brakePower
-      value: 1000000
-      objectReference: {fileID: 0}
-    - target: {fileID: 9031719103029147089, guid: 780a320632305454e89aa993737c5b96, type: 3}
-      propertyPath: motorPower
-      value: 1000000
-      objectReference: {fileID: 0}
     - target: {fileID: 9031719103029147089, guid: 780a320632305454e89aa993737c5b96, type: 3}
       propertyPath: turnSensitivity
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 9031719103029147089, guid: 780a320632305454e89aa993737c5b96, type: 3}
-      propertyPath: decelerationFactor
-      value: 25000
-      objectReference: {fileID: 0}
-    - target: {fileID: 9031719103029147089, guid: 780a320632305454e89aa993737c5b96, type: 3}
-      propertyPath: steeringCurve.m_Curve.Array.data[1].time
-      value: 80.55637
-      objectReference: {fileID: 0}
-    - target: {fileID: 9031719103029147089, guid: 780a320632305454e89aa993737c5b96, type: 3}
-      propertyPath: steeringCurve.m_Curve.Array.data[1].value
-      value: 21.552475
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
