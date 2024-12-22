@@ -30,13 +30,14 @@ public class VehicleController : MonoBehaviour
     }
 
     void Update()
-        {
-            speed = rb.velocity.magnitude;
-            ApplyMotor();
-            ApplySteering();
-            ApplyBrake();
-            ApplyWheelPositions();
-        }
+    {
+        speed = rb.velocity.magnitude;
+        ApplyMotor();
+        ApplySteering();
+        ApplyBrake();
+        ApplyWheelPositions();
+
+    }
 
     public void SetInputs(float gasInput, float steeringInput)
     {
@@ -73,7 +74,7 @@ public class VehicleController : MonoBehaviour
             decelerationTimer += Time.deltaTime;
         }
 
-        float decelerationBrake = Mathf.Lerp(0, maxDecelerationFactor, decelerationTimer/timeDecelerationFactor);
+        float decelerationBrake = Mathf.Lerp(0, maxDecelerationFactor, decelerationTimer / timeDecelerationFactor);
 
         wheelColliders.wheelFR.brakeTorque = brakeInput * brakePower * 0.7f + decelerationBrake;
         wheelColliders.wheelFL.brakeTorque = brakeInput * brakePower * 0.7f + decelerationBrake;
@@ -124,22 +125,22 @@ public class VehicleController : MonoBehaviour
         wheelMesh.transform.position = position;
         wheelMesh.transform.rotation = quat;
     }
-}
 
-[System.Serializable]
-public class WheelColliders
-{
-    public WheelCollider wheelFR;
-    public WheelCollider wheelFL;
-    public WheelCollider wheelRR;
-    public WheelCollider wheelRL;
-}
+    [System.Serializable]
+    public class WheelColliders
+    {
+        public WheelCollider wheelFR;
+        public WheelCollider wheelFL;
+        public WheelCollider wheelRR;
+        public WheelCollider wheelRL;
+    }
 
-[System.Serializable]
-public class WheelMeshes
-{
-    public MeshRenderer wheelFR;
-    public MeshRenderer wheelFL;
-    public MeshRenderer wheelRR;
-    public MeshRenderer wheelRL;
+    [System.Serializable]
+    public class WheelMeshes
+    {
+        public MeshRenderer wheelFR;
+        public MeshRenderer wheelFL;
+        public MeshRenderer wheelRR;
+        public MeshRenderer wheelRL;
+    }
 }

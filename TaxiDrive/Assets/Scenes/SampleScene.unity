@@ -334,6 +334,11 @@ Light:
   m_CorrespondingSourceObject: {fileID: 8435009526390391670, guid: 5ce2f322a07c4144ca3c39df5c77df78, type: 3}
   m_PrefabInstance: {fileID: 468487735810395151}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &826065181 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4064228883400392232, guid: 780a320632305454e89aa993737c5b96, type: 3}
+  m_PrefabInstance: {fileID: 5044652203519248290}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &907402002
 GameObject:
   m_ObjectHideFlags: 0
@@ -436,6 +441,21 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!1 &1659468258 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6103988148157936952, guid: 780a320632305454e89aa993737c5b96, type: 3}
+  m_PrefabInstance: {fileID: 5044652203519248290}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1786880789 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3797482709872124583, guid: 780a320632305454e89aa993737c5b96, type: 3}
+  m_PrefabInstance: {fileID: 5044652203519248290}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &2086385988 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1495234380046444406, guid: 780a320632305454e89aa993737c5b96, type: 3}
+  m_PrefabInstance: {fileID: 5044652203519248290}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &265393093660437995
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -566,10 +586,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: PoliceCar
       objectReference: {fileID: 0}
-    - target: {fileID: 7828204481897926458, guid: c5e0da4747ed81241b44e5fdbd81aefa, type: 3}
-      propertyPath: m_Drag
-      value: 0.05
-      objectReference: {fileID: 0}
     - target: {fileID: 8311959537059736133, guid: c5e0da4747ed81241b44e5fdbd81aefa, type: 3}
       propertyPath: m_LocalPosition.x
       value: -45
@@ -614,84 +630,11 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 205373798}
-    - target: {fileID: 8894933627932195508, guid: c5e0da4747ed81241b44e5fdbd81aefa, type: 3}
-      propertyPath: turnSensitivity
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8894933627932195508, guid: c5e0da4747ed81241b44e5fdbd81aefa, type: 3}
-      propertyPath: maxDecelerationFactor
-      value: 2500
-      objectReference: {fileID: 0}
-    - target: {fileID: 8894933627932195508, guid: c5e0da4747ed81241b44e5fdbd81aefa, type: 3}
-      propertyPath: timeDecelerationFactor
-      value: 10
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c5e0da4747ed81241b44e5fdbd81aefa, type: 3}
---- !u!1001 &2395830846865380775
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 298264052146987259, guid: c9e94faa8a53e024c851bc40e0bb4642, type: 3}
-      propertyPath: m_Name
-      value: City
-      objectReference: {fileID: 0}
-    - target: {fileID: 298264052146987259, guid: c9e94faa8a53e024c851bc40e0bb4642, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6991205246214637835, guid: c9e94faa8a53e024c851bc40e0bb4642, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6991205246214637835, guid: c9e94faa8a53e024c851bc40e0bb4642, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6991205246214637835, guid: c9e94faa8a53e024c851bc40e0bb4642, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6991205246214637835, guid: c9e94faa8a53e024c851bc40e0bb4642, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6991205246214637835, guid: c9e94faa8a53e024c851bc40e0bb4642, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6991205246214637835, guid: c9e94faa8a53e024c851bc40e0bb4642, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6991205246214637835, guid: c9e94faa8a53e024c851bc40e0bb4642, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6991205246214637835, guid: c9e94faa8a53e024c851bc40e0bb4642, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6991205246214637835, guid: c9e94faa8a53e024c851bc40e0bb4642, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6991205246214637835, guid: c9e94faa8a53e024c851bc40e0bb4642, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: c9e94faa8a53e024c851bc40e0bb4642, type: 3}
 --- !u!1001 &5044652203519248290
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -700,14 +643,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1888813715407027121, guid: 780a320632305454e89aa993737c5b96, type: 3}
-      propertyPath: m_Mass
-      value: 1000
-      objectReference: {fileID: 0}
     - target: {fileID: 2304602374072344684, guid: 780a320632305454e89aa993737c5b96, type: 3}
       propertyPath: speedText
       value: 
       objectReference: {fileID: 596901151}
+    - target: {fileID: 6651665286800607219, guid: 780a320632305454e89aa993737c5b96, type: 3}
+      propertyPath: wheelEffectsObjects.wheelFL
+      value: 
+      objectReference: {fileID: 1659468258}
+    - target: {fileID: 6651665286800607219, guid: 780a320632305454e89aa993737c5b96, type: 3}
+      propertyPath: wheelEffectsObjects.wheelFR
+      value: 
+      objectReference: {fileID: 1786880789}
+    - target: {fileID: 6651665286800607219, guid: 780a320632305454e89aa993737c5b96, type: 3}
+      propertyPath: wheelEffectsObjects.wheelRL
+      value: 
+      objectReference: {fileID: 2086385988}
+    - target: {fileID: 6651665286800607219, guid: 780a320632305454e89aa993737c5b96, type: 3}
+      propertyPath: wheelEffectsObjects.wheelRR
+      value: 
+      objectReference: {fileID: 826065181}
     - target: {fileID: 7649626134441871558, guid: 780a320632305454e89aa993737c5b96, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -751,10 +706,6 @@ PrefabInstance:
     - target: {fileID: 7649626134441907428, guid: 780a320632305454e89aa993737c5b96, type: 3}
       propertyPath: m_Name
       value: Vehicle_Taxi_separate
-      objectReference: {fileID: 0}
-    - target: {fileID: 9031719103029147089, guid: 780a320632305454e89aa993737c5b96, type: 3}
-      propertyPath: turnSensitivity
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -828,9 +779,8 @@ SceneRoots:
   m_Roots:
   - {fileID: 265393093660437995}
   - {fileID: 468487735810395151}
-  - {fileID: 5044652203519248290}
-  - {fileID: 2395830846865380775}
   - {fileID: 1841134780636181085}
   - {fileID: 8615170445889427846}
   - {fileID: 907402006}
   - {fileID: 234879034}
+  - {fileID: 5044652203519248290}
