@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     private VehicleController vehicleController;
+    private CarLights carLights;
 
     [System.Serializable]
     public class WheelEffectsObjects
@@ -17,11 +18,17 @@ public class PlayerController : MonoBehaviour
 
     public WheelEffectsObjects wheelEffectsObjects;
 
-
+    private bool isDrifting;
 
     void Start()
     {
         vehicleController = GetComponent<VehicleController>();
+        carLights = GetComponent<CarLights>();
+
+        if (carLights != null)
+        {
+            carLights.isPlayer = true;
+        }
     }
 
     void Update()
@@ -29,11 +36,17 @@ public class PlayerController : MonoBehaviour
         float gasInput = Input.GetAxis("Vertical");
         float steeringInput = Input.GetAxis("Horizontal");
 
-        // Pass inputs to the vehicle controller
-        vehicleController.SetInputs(gasInput, steeringInput);
+        isDrifting = Input.GetKey(KeyCode.Space);
 
-        // Handle wheel effects
+        vehicleController.SetInputs(gasInput, steeringInput);
+        vehicleController.SetDrift(isDrifting);
+
         HandleWheelEffects();
+
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            carLights.OperateFrontLights();
+        }
     }
 
     void HandleWheelEffects()
@@ -49,16 +62,15 @@ public class PlayerController : MonoBehaviour
         {
             TrailRenderer trail = wheel.GetComponentInChildren<TrailRenderer>();
             ParticleSystem smoke = wheel.GetComponentInChildren<ParticleSystem>();
-            if (Input.GetKey(KeyCode.Space))
+            if (isDrifting)
             {
-                trail.emitting = true;
-                smoke.Emit(1);
+                if (trail != null) trail.emitting = true;
+                if (smoke != null) smoke.Emit(1);
             }
             else
             {
-                trail.emitting = false;
+                if (trail != null) trail.emitting = false;
             }
-
         }
     }
 }

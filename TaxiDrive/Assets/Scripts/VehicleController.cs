@@ -11,7 +11,12 @@ public class VehicleController : MonoBehaviour
     public float turnSensitivity;
     public float maxDecelerationFactor;
     public float timeDecelerationFactor;
+    public float driftFactor = 0.95f;
+    public float normalTraction = 1f;
+    public float driftTraction = 0.5f;
 
+
+    private bool isDrifting = false;
     private float speed;
     private float slipAngle;
     private float gasInput;
@@ -20,6 +25,7 @@ public class VehicleController : MonoBehaviour
     private float decelerationTimer;
 
     private Rigidbody rb;
+    private CarLights carLights;
     public WheelColliders wheelColliders;
     public WheelMeshes wheelMeshes;
 
@@ -27,16 +33,18 @@ public class VehicleController : MonoBehaviour
     {
         rb = gameObject.GetComponent<Rigidbody>();
         rb.centerOfMass = new Vector3(0, -0.5f, 0);
+        carLights = GetComponent<CarLights>();
     }
 
     void Update()
     {
         speed = rb.velocity.magnitude;
+
         ApplyMotor();
         ApplySteering();
         ApplyBrake();
+        ApplyDrift();
         ApplyWheelPositions();
-
     }
 
     public void SetInputs(float gasInput, float steeringInput)
@@ -66,13 +74,17 @@ public class VehicleController : MonoBehaviour
             brakeInput = 0;
         }
     }
+    public void SetDrift(bool drifting)
+    {
+        isDrifting = drifting;
+    }
 
     void ApplyBrake()
     {
         if (gasInput == 0)
         {
             decelerationTimer += Time.deltaTime;
-        }
+        } 
 
         float decelerationBrake = Mathf.Lerp(0, maxDecelerationFactor, decelerationTimer / timeDecelerationFactor);
 
@@ -81,6 +93,9 @@ public class VehicleController : MonoBehaviour
 
         wheelColliders.wheelRR.brakeTorque = brakeInput * brakePower * 0.3f + decelerationBrake;
         wheelColliders.wheelRL.brakeTorque = brakeInput * brakePower * 0.3f + decelerationBrake;
+
+        carLights.BackLightsOn = brakeInput > 0;
+        carLights.OperateBackLights();
     }
     void ApplyMotor()
     {
@@ -124,6 +139,33 @@ public class VehicleController : MonoBehaviour
         coll.GetWorldPose(out position, out quat);
         wheelMesh.transform.position = position;
         wheelMesh.transform.rotation = quat;
+    }
+
+    void ApplyDrift()
+    {
+        if (isDrifting)
+        {
+            // Reduce rear wheel traction
+            wheelColliders.wheelRR.sidewaysFriction = CreateDriftFriction(driftTraction);
+            wheelColliders.wheelRL.sidewaysFriction = CreateDriftFriction(driftTraction);
+
+            // Add lateral force for slide (optional for more dramatic drift)
+            Vector3 lateralForce = transform.right * rb.velocity.magnitude * driftFactor;
+            rb.AddForce(lateralForce, ForceMode.Force);
+        }
+        else
+        {
+            // Reset to normal traction
+            wheelColliders.wheelRR.sidewaysFriction = CreateDriftFriction(normalTraction);
+            wheelColliders.wheelRL.sidewaysFriction = CreateDriftFriction(normalTraction);
+        }
+    }
+
+    WheelFrictionCurve CreateDriftFriction(float traction)
+    {
+        WheelFrictionCurve frictionCurve = wheelColliders.wheelRR.sidewaysFriction;
+        frictionCurve.stiffness = traction;
+        return frictionCurve;
     }
 
     [System.Serializable]
