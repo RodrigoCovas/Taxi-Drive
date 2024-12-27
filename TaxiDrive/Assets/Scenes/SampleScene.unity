@@ -588,9 +588,9 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1294829596}
   m_CullTransparentMesh: 0
---- !u!33 &1861560267 stripped
-MeshFilter:
-  m_CorrespondingSourceObject: {fileID: 1469269905706791198, guid: 77ab06eba2d5a1247b91eacd6739e122, type: 3}
+--- !u!64 &1861560268 stripped
+MeshCollider:
+  m_CorrespondingSourceObject: {fileID: 3081032951813873279, guid: 77ab06eba2d5a1247b91eacd6739e122, type: 3}
   m_PrefabInstance: {fileID: 8615170445889427846}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &265393093660437995
@@ -820,18 +820,30 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2910986430738384272, guid: b3a11493d61286c4f83266f2e3100c41, type: 3}
+      propertyPath: spawnMode
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6835621037236893619, guid: b3a11493d61286c4f83266f2e3100c41, type: 3}
       propertyPath: m_Name
       value: SphereSpawnerObject
       objectReference: {fileID: 0}
     - target: {fileID: 7384403957478515593, guid: b3a11493d61286c4f83266f2e3100c41, type: 3}
-      propertyPath: roadMeshes.Array.data[0]
+      propertyPath: playerTransform
       value: 
-      objectReference: {fileID: 1861560267}
+      objectReference: {fileID: 205373798}
+    - target: {fileID: 7384403957478515593, guid: b3a11493d61286c4f83266f2e3100c41, type: 3}
+      propertyPath: roadMeshCollider
+      value: 
+      objectReference: {fileID: 1861560268}
     - target: {fileID: 9056758927118446174, guid: b3a11493d61286c4f83266f2e3100c41, type: 3}
-      propertyPath: roadMeshes.Array.data[0]
+      propertyPath: playerTransform
       value: 
-      objectReference: {fileID: 1861560267}
+      objectReference: {fileID: 205373798}
+    - target: {fileID: 9056758927118446174, guid: b3a11493d61286c4f83266f2e3100c41, type: 3}
+      propertyPath: roadMeshCollider
+      value: 
+      objectReference: {fileID: 1861560268}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -900,6 +912,14 @@ PrefabInstance:
     - target: {fileID: 7649626134441907428, guid: 780a320632305454e89aa993737c5b96, type: 3}
       propertyPath: m_Name
       value: Vehicle_Taxi_separate
+      objectReference: {fileID: 0}
+    - target: {fileID: 7649626134441907428, guid: 780a320632305454e89aa993737c5b96, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 7649626134441907430, guid: 780a320632305454e89aa993737c5b96, type: 3}
+      propertyPath: m_TagString
+      value: Player
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -48,6 +48,7 @@ MonoBehaviour:
   spherePrefab: {fileID: 6917343644943938184, guid: 2009088c4cdcdb84cb62363f26d61233, type: 3}
   numberOfSpheres: 1
   randomRoadPoint: {fileID: 7384403957478515593}
+  spawnMode: 1
 --- !u!114 &7384403957478515593
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -60,8 +61,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8a764e3df864cd469cbfda7459b9d9b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  roadMeshes:
-  - {fileID: 0}
+  roadMeshCollider: {fileID: 0}
+  playerTransform: {fileID: 0}
+  nearPlayerRadius: 300
+  minPlayerDistance: 50
   maxAttempts: 1000
 --- !u!1 &6835621037236893619
 GameObject:
@@ -144,6 +147,7 @@ MonoBehaviour:
   spherePrefab: {fileID: 2663320703972929484, guid: 0b8abee8dd19c0a40807fa44e5b652d6, type: 3}
   numberOfSpheres: 1
   randomRoadPoint: {fileID: 9056758927118446174}
+  spawnMode: 0
 --- !u!114 &9056758927118446174
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -156,6 +160,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8a764e3df864cd469cbfda7459b9d9b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  roadMeshes:
-  - {fileID: 0}
+  roadMeshCollider: {fileID: 0}
+  playerTransform: {fileID: 0}
+  nearPlayerRadius: 300
+  minPlayerDistance: 50
   maxAttempts: 1000
