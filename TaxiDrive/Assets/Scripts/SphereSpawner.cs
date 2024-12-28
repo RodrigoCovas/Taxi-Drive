@@ -1,11 +1,13 @@
 using UnityEngine;
+using System.Collections;
 
 public class SphereSpawner : MonoBehaviour
 {
-    public GameObject spherePrefab;
-    public int numberOfSpheres = 1;
+    public GameObject startSpherePrefab;
+    public GameObject endSpherePrefab;
     public RandomRoadPoint randomRoadPoint;
-    public RandomRoadPoint.SpawnMode spawnMode = RandomRoadPoint.SpawnMode.Random;
+    public RandomRoadPoint.SpawnMode startSpawnMode = RandomRoadPoint.SpawnMode.NearPlayer;
+    public RandomRoadPoint.SpawnMode endSpawnMode = RandomRoadPoint.SpawnMode.Random;
 
     private void Start()
     {
@@ -15,23 +17,51 @@ public class SphereSpawner : MonoBehaviour
             Debug.LogError("RandomRoadPoint script not found in the scene!");
             return;
         }
-
-        SpawnSpheres();
+        StartCoroutine(SpawnSpheresSequentially());
     }
 
-    private void SpawnSpheres()
+    private IEnumerator SpawnSpheresSequentially()
     {
-        for (int i = 0; i < numberOfSpheres; i++)
+        // Spawn the start sphere
+        Vector3 startSpawnPosition = randomRoadPoint.GetRandomRoadPoint(startSpawnMode);
+        if (startSpawnPosition != Vector3.zero)
         {
-            Vector3 spawnPosition = randomRoadPoint.GetRandomRoadPoint(spawnMode);
-            if (spawnPosition != Vector3.zero)
+            GameObject startSphere = Instantiate(startSpherePrefab, startSpawnPosition, Quaternion.identity);
+            startSphere.tag = "Target";
+
+            TimerSphereTrigger startTrigger = startSphere.GetComponent<TimerSphereTrigger>();
+            if (startTrigger != null)
             {
-                Instantiate(spherePrefab, spawnPosition, Quaternion.identity);
+                startTrigger.sphereToControl = startSphere;
+                startTrigger.destructionTime = 3.0f; // Set destruction time for the start sphere
             }
-            else
+
+            // Wait until the start sphere is destroyed
+            yield return new WaitUntil(() => startSphere == null);
+        }
+        else
+        {
+            Debug.LogWarning("Suitable start point not found!");
+            yield break; // Exit the coroutine if no start point is found
+        }
+
+        // Spawn the end sphere
+        Vector3 endSpawnPosition = randomRoadPoint.GetRandomRoadPoint(endSpawnMode);
+        if (endSpawnPosition != Vector3.zero)
+        {
+            GameObject endSphere = Instantiate(endSpherePrefab, endSpawnPosition, Quaternion.identity);
+            endSphere.tag = "Target";
+
+            TimerSphereTrigger endTrigger = endSphere.GetComponent<TimerSphereTrigger>();
+            if (endTrigger != null)
             {
-                Debug.LogWarning("No suitable point found!");
+                endTrigger.sphereToControl = endSphere;
+                endTrigger.destructionTime = 5.0f; // Set destruction time for the end sphere
             }
+        }
+        else
+        {
+            Debug.LogWarning("Suitable end point not found!");
         }
     }
 }

@@ -5,10 +5,13 @@ public class TimerSphereTrigger : MonoBehaviour
     public string PlayerTag = "Player";
     private float timeInside = 0.0f;
     private bool isInside = false;
+    public bool triggered = false;
+
+    public GameObject sphereToControl; // Reference to the sphere this script controls
+    public float destructionTime = 3.0f; // Time required inside the trigger to destroy the sphere
 
     void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Trigger Entered!");
         if (other.CompareTag(PlayerTag))
         {
             Debug.Log("Player Entered Sphere!");
@@ -23,9 +26,16 @@ public class TimerSphereTrigger : MonoBehaviour
         {
             timeInside += Time.deltaTime;
 
-            if (timeInside >= 3.0f)
+            if (timeInside >= destructionTime)
             {
-                Debug.Log("Sphere Triggered!");
+                triggered = true;
+
+                // Destroy the sphere this trigger controls
+                if (sphereToControl != null)
+                {
+                    Destroy(sphereToControl);
+                    Debug.Log($"Sphere {sphereToControl.name} destroyed!");
+                }
             }
         }
     }
@@ -38,5 +48,4 @@ public class TimerSphereTrigger : MonoBehaviour
             timeInside = 0.0f;
         }
     }
-
 }

@@ -1,14 +1,14 @@
 using UnityEngine;
+using UnityEngine.AI;
 
 public class RandomRoadPoint : MonoBehaviour
 {
-    public enum SpawnMode { Random, NearPlayer }
-
-    public MeshCollider roadMeshCollider;
-    public Transform playerTransform;
-    public float nearPlayerRadius = 300f;
-    public float minPlayerDistance = 50f;
-    public int maxAttempts = 1000;
+    [SerializeField] private MeshCollider roadMeshCollider; // Mesh collider of the road
+    [SerializeField] private Transform playerTransform; // Reference to the player
+    [SerializeField] private float nearPlayerRadius = 300f; // Radius around the player to spawn objects
+    [SerializeField] private float minPlayerDistance = 50f; // Minimum distance from the player for spawning
+    [SerializeField] private float maxAttempts = 1000f; // Maximum attempts to find a valid point
+    [SerializeField] private float sampleRadius = 5f; // The radius for finding the nearest walkable point
 
     public Vector3 GetRandomRoadPoint(SpawnMode mode)
     {
@@ -35,10 +35,12 @@ public class RandomRoadPoint : MonoBehaviour
             // Generate a random point within the near-player radius
             Vector3 randomPoint = GetRandomPointAroundPlayer();
 
-            if (ValidatePointOnRoad(randomPoint))
+            // Find the nearest walkable point using NavMesh.SamplePosition
+            Vector3 nearestWalkablePoint = GetNearestWalkablePoint(randomPoint);
+
+            if (nearestWalkablePoint != Vector3.zero)
             {
-                //Debug.Log(Vector3.Distance(playerTransform.position, randomPoint));
-                return randomPoint;
+                return nearestWalkablePoint;
             }
         }
 
@@ -48,29 +50,24 @@ public class RandomRoadPoint : MonoBehaviour
 
     private Vector3 GetRandomPoint()
     {
-        int attempts = 0;
-        while (attempts < maxAttempts)
+        for (int attempts = 0; attempts < maxAttempts; attempts++)
         {
-            Bounds bounds = roadMeshCollider.sharedMesh.bounds; // Use sharedMesh to avoid potential errors.
+            Bounds bounds = roadMeshCollider.sharedMesh.bounds; // Get bounds of the road mesh
 
+            // Generate a random point within the bounds of the road mesh
             Vector3 randomPoint = bounds.center + new Vector3(
                 Random.Range(-bounds.extents.x, bounds.extents.x),
                 Random.Range(-bounds.extents.y, bounds.extents.y),
                 Random.Range(-bounds.extents.z, bounds.extents.z)
             );
 
-            RaycastHit hit;
-            // Perform a raycast to check if the point intersects with the mesh
-            if (Physics.Raycast(randomPoint + Vector3.up * 0.1f, Vector3.down, out hit, 10f))
-            {
-                if (hit.collider != null && hit.collider.gameObject == roadMeshCollider.gameObject)
-                {
-                    //Debug.Log("Point found after " + attempts + " attempts.");
-                    return hit.point;
-                }
-            }
+            // Find the nearest walkable point using NavMesh.SamplePosition
+            Vector3 nearestWalkablePoint = GetNearestWalkablePoint(randomPoint);
 
-            attempts++;
+            if (nearestWalkablePoint != Vector3.zero)
+            {
+                return nearestWalkablePoint;
+            }
         }
 
         Debug.LogWarning("Maximum attempts reached. No suitable point found.");
@@ -79,6 +76,7 @@ public class RandomRoadPoint : MonoBehaviour
 
     private Vector3 GetRandomPointAroundPlayer()
     {
+        // Generate a random point around the player within a defined radius
         Vector3 playerPosition = playerTransform.position;
 
         float randomDistance = Random.Range(minPlayerDistance, nearPlayerRadius);
@@ -93,13 +91,24 @@ public class RandomRoadPoint : MonoBehaviour
         return playerPosition + offset;
     }
 
-    private bool ValidatePointOnRoad(Vector3 point)
+    private Vector3 GetNearestWalkablePoint(Vector3 point)
     {
-        if (Physics.Raycast(point + Vector3.up * 10f, Vector3.down, out RaycastHit hit, 20f))
+        NavMeshHit hit;
+
+        // Use NavMesh.SamplePosition to find the closest walkable point to the given point
+        if (NavMesh.SamplePosition(point, out hit, sampleRadius, NavMesh.AllAreas))
         {
-            return hit.collider != null && hit.collider == roadMeshCollider;
+            // Return the nearest valid point on the NavMesh
+            return hit.position;
         }
 
-        return false;
+        // If no valid point is found, return Vector3.zero
+        return Vector3.zero;
+    }
+
+    public enum SpawnMode
+    {
+        Random,
+        NearPlayer
     }
 }
