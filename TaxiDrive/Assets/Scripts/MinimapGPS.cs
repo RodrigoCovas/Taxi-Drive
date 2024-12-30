@@ -28,7 +28,7 @@ public class MinimapGPS : MonoBehaviour
         lineRenderer.positionCount = 0; // Start with no positions
         lineRenderer.startWidth = 0.2f; // Adjust width to fit the minimap
         lineRenderer.endWidth = 0.2f;
-        lineRenderer.material = new Material(Shader.Find("Unlit/Color"));
+        lineRenderer.material = new Material(Shader.Find("Sprites/Default"));
         lineRenderer.material.color = Color.green; // Green GPS line
 
         // Start checking for the target

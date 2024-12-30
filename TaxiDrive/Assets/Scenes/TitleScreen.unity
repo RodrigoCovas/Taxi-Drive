@@ -1170,6 +1170,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80e577e72dda3e146921f0b823a8ba43, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  clickButton: {fileID: 8300000, guid: 96929aaa721653b4ca38c00bbb461430, type: 3}
   musicPlaylist:
   - {fileID: 8300000, guid: 5a26f480512b8e245879494f913abf10, type: 3}
   - {fileID: 8300000, guid: 98407e1757b1fca4f9bfeda3249545e9, type: 3}
@@ -1233,7 +1234,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc4d9c36af489d248ab6ec151a82d16a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clickButton: {fileID: 8300000, guid: 96929aaa721653b4ca38c00bbb461430, type: 3}
 --- !u!1 &1368824460
 GameObject:
   m_ObjectHideFlags: 0

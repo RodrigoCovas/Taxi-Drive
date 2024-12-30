@@ -7,6 +7,7 @@ public class AudioManager : MonoBehaviour
     private AudioSource musicSource;
     private AudioSource sfxSource;
     public AudioClip[] musicPlaylist;
+    public AudioClip clickButton;
     private int currentMusicIndex = 0;
 
     void Awake()
