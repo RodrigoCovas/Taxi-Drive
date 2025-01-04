@@ -54,4 +54,8 @@ public class AIController : MonoBehaviour
         // Set inputs to the vehicle controller
         vehicleController.SetInputs(gasInput, steeringInput);
     }
+    public void SetPlayerTransform(Transform playerTransform)
+    {
+        player = playerTransform;
+    }
 }

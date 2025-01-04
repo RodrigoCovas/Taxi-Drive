@@ -173,7 +173,7 @@ GameObject:
   - component: {fileID: 8257454369460260279}
   m_Layer: 0
   m_Name: PoliceCar
-  m_TagString: Untagged
+  m_TagString: PoliceCar
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -269,7 +269,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
-  detectionRange: 50
+  detectionRange: 300
   followDistance: 10
   maxSteeringAngle: 30
   maxSpeed: 20

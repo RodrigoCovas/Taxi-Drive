@@ -1,0 +1,70 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3388111039011442357
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 653882967601354661}
+  - component: {fileID: 3524850697007109958}
+  - component: {fileID: 44791618219322804}
+  m_Layer: 0
+  m_Name: PoliceCarSpawnerObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &653882967601354661
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3388111039011442357}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -92.738144, y: -34.836594, z: -94.53173}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3524850697007109958
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3388111039011442357}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2dc6e4d77fd184343bd5b1c7f2429ea4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  policeCarPrefab: {fileID: 796919624059067017, guid: c5e0da4747ed81241b44e5fdbd81aefa, type: 3}
+  randomRoadPoint: {fileID: 44791618219322804}
+  player: {fileID: 0}
+  spawnMode: 1
+  maxPoliceCars: 15
+--- !u!114 &44791618219322804
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3388111039011442357}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8a764e3df864cd469cbfda7459b9d9b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  roadMeshCollider: {fileID: 0}
+  playerTransform: {fileID: 0}
+  nearPlayerRadius: 300
+  minPlayerDistance: 50
+  maxAttempts: 1000
+  sampleRadius: 5
