@@ -1,12 +1,16 @@
 
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class PoliceCarDespawner : MonoBehaviour
 {
     public VehicleController vehicleController;
+    public float timeThreshold = 5f;
+    public float distanceThreshold = 300f;
+
     private float speed;
     private float timeAtZeroSpeed;
-    public float timeThreshold = 5f;
+    private Transform player;
 
     void Update()
     {
@@ -23,12 +27,22 @@ public class PoliceCarDespawner : MonoBehaviour
 
         if (timeAtZeroSpeed >= timeThreshold)
         {
-            DespawnCar();
+            float distanceToPlayer = Vector3.Distance(transform.position, player.position);
+            if (distanceToPlayer > distanceThreshold)
+            {
+                DespawnCar();
+            }
         }
     }
 
     void DespawnCar()
     {
+        Debug.Log($"Police car despawned.");
         Destroy(gameObject);
+    }
+
+    public void SetPlayerTransform(Transform playerTransform)
+    {
+        player = playerTransform;
     }
 }

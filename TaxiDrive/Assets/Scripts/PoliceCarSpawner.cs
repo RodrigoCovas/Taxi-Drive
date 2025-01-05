@@ -22,6 +22,7 @@ public class PoliceCarSpawner : MonoBehaviour
         {
             DespawnRandomPoliceCar();
         }
+        CheckForDespawns();
     }
 
     public void SpawnPoliceCar()
@@ -48,6 +49,7 @@ public class PoliceCarSpawner : MonoBehaviour
 
         GameObject newPoliceCar = Instantiate(policeCarPrefab, spawnPoint, Quaternion.identity, spawnParent);
         newPoliceCar.GetComponent<AIController>().SetPlayerTransform(player);
+        newPoliceCar.GetComponent<PoliceCarDespawner>().SetPlayerTransform(player);
         spawnedPoliceCars.Add(newPoliceCar);
 
         Debug.Log($"Police car spawned at {spawnPoint}. Total: {spawnedPoliceCars.Count}");
@@ -68,5 +70,17 @@ public class PoliceCarSpawner : MonoBehaviour
         Destroy(policeCarToDespawn);
 
         Debug.Log($"Police car despawned. Remaining: {spawnedPoliceCars.Count}");
+    }
+
+    private void CheckForDespawns()
+    {
+        for (int i = spawnedPoliceCars.Count - 1; i >= 0; i--)
+        {
+            if (spawnedPoliceCars[i] == null)
+            {
+                spawnedPoliceCars.RemoveAt(i);
+                Debug.Log("A police car was despawned by another script.");
+            }
+        }
     }
 }
