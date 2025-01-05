@@ -171,6 +171,7 @@ GameObject:
   - component: {fileID: 8823442156830600045}
   - component: {fileID: 7828204481897926458}
   - component: {fileID: 8257454369460260279}
+  - component: {fileID: 5537909484881490674}
   m_Layer: 0
   m_Name: PoliceCar
   m_TagString: PoliceCar
@@ -355,6 +356,19 @@ MonoBehaviour:
   isPlayer: 0
   spriteOff: {fileID: 0}
   spriteOn: {fileID: 0}
+--- !u!114 &5537909484881490674
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 796919624059067017}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca473ca01d6e907418a33a5ae64d66a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  vehicleController: {fileID: 8894933627932195508}
 --- !u!1 &1273330281422914714
 GameObject:
   m_ObjectHideFlags: 0

@@ -47,6 +47,11 @@ public class VehicleController : MonoBehaviour
         ApplyWheelPositions();
     }
 
+    public float GetSpeed()
+    { 
+        return speed;
+    }   
+
     public void SetInputs(float gasInput, float steeringInput)
     {
         this.gasInput = gasInput;
