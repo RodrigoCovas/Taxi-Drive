@@ -10,6 +10,17 @@ public class TimerSphereTrigger : MonoBehaviour
     public GameObject sphereToControl; // Reference to the sphere this script controls
     public float destructionTime = 3.0f; // Time required inside the trigger to destroy the sphere
 
+    private EventTimer timer;
+    private float challengeTime = 60f;
+    private PlayerComfort comfortBar;
+
+    public void AssignTimerComfort(EventTimer ogTimer, float ogChallengeTime, PlayerComfort ogComfortBar)
+    {
+        timer = ogTimer;
+        challengeTime = ogChallengeTime;
+        comfortBar = ogComfortBar;
+    }
+
     void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag(PlayerTag))
@@ -29,10 +40,12 @@ public class TimerSphereTrigger : MonoBehaviour
             if (timeInside >= destructionTime)
             {
                 triggered = true;
-
+                
                 // Destroy the sphere this trigger controls
                 if (sphereToControl != null)
                 {
+                    timer.ChangeState(challengeTime);
+                    comfortBar.ChangeState();
                     Destroy(sphereToControl);
                     Debug.Log($"Sphere {sphereToControl.name} destroyed!");
                 }

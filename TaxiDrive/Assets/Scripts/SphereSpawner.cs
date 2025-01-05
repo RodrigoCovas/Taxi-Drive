@@ -9,6 +9,10 @@ public class SphereSpawner : MonoBehaviour
     public RandomRoadPoint.SpawnMode startSpawnMode = RandomRoadPoint.SpawnMode.NearPlayer;
     public RandomRoadPoint.SpawnMode endSpawnMode = RandomRoadPoint.SpawnMode.Random;
 
+    public EventTimer timer;
+    public float challengeTime = 60f;
+    public PlayerComfort comfortBar;
+
     private void Start()
     {
         randomRoadPoint = FindObjectOfType<RandomRoadPoint>();
@@ -34,6 +38,7 @@ public class SphereSpawner : MonoBehaviour
             {
                 startTrigger.sphereToControl = startSphere;
                 startTrigger.destructionTime = 3.0f; // Set destruction time for the start sphere
+                startTrigger.AssignTimerComfort(timer, challengeTime, comfortBar);
             }
 
             // Wait until the start sphere is destroyed
@@ -57,6 +62,7 @@ public class SphereSpawner : MonoBehaviour
             {
                 endTrigger.sphereToControl = endSphere;
                 endTrigger.destructionTime = 5.0f; // Set destruction time for the end sphere
+                endTrigger.AssignTimerComfort(timer, challengeTime, comfortBar);
             }
         }
         else
