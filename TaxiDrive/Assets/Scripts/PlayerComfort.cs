@@ -64,7 +64,7 @@ public class PlayerComfort : MonoBehaviour
         if (collision.gameObject.CompareTag("PoliceCar"))
         {
             Debug.Log("Collision Detected with: " + collision.gameObject.name);
-            float damageAmount = 20f;
+            float damageAmount = 10f;
             TakeDamage(damageAmount);
         }
     }
