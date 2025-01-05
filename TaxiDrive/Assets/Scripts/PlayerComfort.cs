@@ -1,10 +1,12 @@
 using Unity.VisualScripting;
+using UnityEditor.VersionControl;
 using UnityEngine;
 
 public class PlayerComfort : MonoBehaviour
 {
     public float maxComfort = 100f;
     public ComfortBarFill comfortBar;
+    public SystemMessages messages;
 
     private float currentComfort;
     private bool eventActive = false;
@@ -62,8 +64,24 @@ public class PlayerComfort : MonoBehaviour
         if (collision.gameObject.CompareTag("PoliceCar"))
         {
             Debug.Log("Collision Detected with: " + collision.gameObject.name);
-            float damageAmount = 10f;
+            float damageAmount = 20f;
             TakeDamage(damageAmount);
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Drink"))
+        {
+            Debug.Log("Drink object triggered");
+            if (eventActive)
+            {
+                float healAmount = 20f;
+                Heal(healAmount);
+                string message = "You found a COLA" + "\n" +
+                                 "Your passenger feels more COMFORTABLE";
+                messages.WriteMessage(message, 2f);
+            }
         }
     }
 }

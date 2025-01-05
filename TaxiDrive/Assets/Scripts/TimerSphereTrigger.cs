@@ -14,13 +14,15 @@ public class TimerSphereTrigger : MonoBehaviour
     private float challengeTime = 60f;
     private PlayerComfort comfortBar;
     private PlayerPoints playerPoints;
+    private SystemMessages messages;
 
-    public void AssignTimerComfortPoints(EventTimer ogTimer, float ogChallengeTime, PlayerComfort ogComfortBar, PlayerPoints ogPlayerPoints)
+    public void AssignTimerComfortPoints(EventTimer ogTimer, float ogChallengeTime, PlayerComfort ogComfortBar, PlayerPoints ogPlayerPoints, SystemMessages ogMessages)
     {
         timer = ogTimer;
         challengeTime = ogChallengeTime;
         comfortBar = ogComfortBar;
         playerPoints = ogPlayerPoints;
+        messages = ogMessages; 
     }
 
     void OnTriggerEnter(Collider other)
@@ -30,6 +32,9 @@ public class TimerSphereTrigger : MonoBehaviour
             Debug.Log("Player Entered Sphere!");
             isInside = true;
             timeInside = 0.0f;
+
+            string message = "Wait " + destructionTime + " seconds inside the area";
+            messages.WriteMessage(message, 2f);
         }
     }
 

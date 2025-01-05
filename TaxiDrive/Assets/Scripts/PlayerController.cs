@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.VersionControl;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
     private VehicleController vehicleController;
     private CarLights carLights;
+    public SystemMessages messages;
 
     [System.Serializable]
     public class WheelEffectsObjects
@@ -19,6 +21,9 @@ public class PlayerController : MonoBehaviour
     public WheelEffectsObjects wheelEffectsObjects;
 
     private bool isDrifting;
+    private bool controlsInverted = false;
+    private float inversionDuration = 20f;
+    private float currentInversionTime = 0f;
 
     void Start()
     {
@@ -33,8 +38,22 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+
         float gasInput = Input.GetAxis("Vertical");
         float steeringInput = Input.GetAxis("Horizontal");
+
+        if (controlsInverted)
+        {
+            gasInput = -gasInput;
+            steeringInput = -steeringInput;
+
+            currentInversionTime -= Time.deltaTime;
+            if (currentInversionTime <= 0f)
+            {
+                controlsInverted = false;
+                Debug.Log("Control inversion ended");
+            }
+        }
 
         isDrifting = Input.GetKey(KeyCode.Space);
 
@@ -71,6 +90,19 @@ public class PlayerController : MonoBehaviour
             {
                 if (trail != null) trail.emitting = false;
             }
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Mirror"))
+        {
+            Debug.Log("Mirror object triggered, Controls are inverted");
+            controlsInverted = true;
+            currentInversionTime = inversionDuration;
+            string message = "You found a MIRROR" + "\n"
+                            + "Your controlls are inverted for " + inversionDuration + " seconds";
+            messages.WriteMessage(message, 2.5f);
         }
     }
 }

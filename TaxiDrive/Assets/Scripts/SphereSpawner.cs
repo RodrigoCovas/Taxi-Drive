@@ -13,6 +13,7 @@ public class SphereSpawner : MonoBehaviour
     public float challengeTime = 60f;
     public PlayerComfort comfortBar;
     public PlayerPoints playerPoints;
+    public SystemMessages messages;
 
     private void Start()
     {
@@ -27,48 +28,54 @@ public class SphereSpawner : MonoBehaviour
 
     private IEnumerator SpawnSpheresSequentially()
     {
-        // Spawn the start sphere
-        Vector3 startSpawnPosition = randomRoadPoint.GetRandomRoadPoint(startSpawnMode);
-        if (startSpawnPosition != Vector3.zero)
+        while (true)
         {
-            GameObject startSphere = Instantiate(startSpherePrefab, startSpawnPosition, Quaternion.identity);
-            startSphere.tag = "Target";
-
-            TimerSphereTrigger startTrigger = startSphere.GetComponent<TimerSphereTrigger>();
-            if (startTrigger != null)
+            // Spawn the start sphere
+            Vector3 startSpawnPosition = randomRoadPoint.GetRandomRoadPoint(startSpawnMode);
+            if (startSpawnPosition != Vector3.zero)
             {
-                startTrigger.sphereToControl = startSphere;
-                startTrigger.destructionTime = 3.0f; // Set destruction time for the start sphere
-                startTrigger.AssignTimerComfortPoints(timer, challengeTime, comfortBar, playerPoints);
+                GameObject startSphere = Instantiate(startSpherePrefab, startSpawnPosition, Quaternion.identity);
+                startSphere.tag = "Target";
+
+                TimerSphereTrigger startTrigger = startSphere.GetComponent<TimerSphereTrigger>();
+                if (startTrigger != null)
+                {
+                    startTrigger.sphereToControl = startSphere;
+                    startTrigger.destructionTime = 3.0f; // Set destruction time for the start sphere
+                    startTrigger.AssignTimerComfortPoints(timer, challengeTime, comfortBar, playerPoints, messages);
+                }
+
+                // Wait until the start sphere is destroyed
+                yield return new WaitUntil(() => startSphere == null);
+            }
+            else
+            {
+                Debug.LogWarning("Suitable start point not found!");
+                yield break; // Exit the coroutine if no start point is found
             }
 
-            // Wait until the start sphere is destroyed
-            yield return new WaitUntil(() => startSphere == null);
-        }
-        else
-        {
-            Debug.LogWarning("Suitable start point not found!");
-            yield break; // Exit the coroutine if no start point is found
-        }
-
-        // Spawn the end sphere
-        Vector3 endSpawnPosition = randomRoadPoint.GetRandomRoadPoint(endSpawnMode);
-        if (endSpawnPosition != Vector3.zero)
-        {
-            GameObject endSphere = Instantiate(endSpherePrefab, endSpawnPosition, Quaternion.identity);
-            endSphere.tag = "Target";
-
-            TimerSphereTrigger endTrigger = endSphere.GetComponent<TimerSphereTrigger>();
-            if (endTrigger != null)
+            // Spawn the end sphere
+            Vector3 endSpawnPosition = randomRoadPoint.GetRandomRoadPoint(endSpawnMode);
+            if (endSpawnPosition != Vector3.zero)
             {
-                endTrigger.sphereToControl = endSphere;
-                endTrigger.destructionTime = 5.0f; // Set destruction time for the end sphere
-                endTrigger.AssignTimerComfortPoints(timer, challengeTime, comfortBar, playerPoints);
+                GameObject endSphere = Instantiate(endSpherePrefab, endSpawnPosition, Quaternion.identity);
+                endSphere.tag = "Target";
+
+                TimerSphereTrigger endTrigger = endSphere.GetComponent<TimerSphereTrigger>();
+                if (endTrigger != null)
+                {
+                    endTrigger.sphereToControl = endSphere;
+                    endTrigger.destructionTime = 5.0f; // Set destruction time for the end sphere
+                    endTrigger.AssignTimerComfortPoints(timer, challengeTime, comfortBar, playerPoints, messages);
+                }
+
+                yield return new WaitUntil(() => endSphere == null);
             }
-        }
-        else
-        {
-            Debug.LogWarning("Suitable end point not found!");
+            else
+            {
+                Debug.LogWarning("Suitable end point not found!");
+                yield break;
+            }
         }
     }
 }

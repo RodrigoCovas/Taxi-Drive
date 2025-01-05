@@ -4,6 +4,7 @@ using UnityEngine.UI;
 public class EventTimer : MonoBehaviour
 {
     public Text timerText;
+    public SystemMessages messages;
 
     private float maxTime = 9999;
     private float currentTime;
@@ -53,6 +54,22 @@ public class EventTimer : MonoBehaviour
         else
         {
             StartEvent(time);
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Clock"))
+        {
+            Debug.Log("Clock object triggered");
+            if (eventActive)
+            {
+                float addedTime = 30f;
+                AddTime(addedTime);
+                string message = "You found a CLOCK" + "\n" +
+                                 "You got " + addedTime + " more seconds!";
+                messages.WriteMessage(message, 2f);
+            }
         }
     }
 }

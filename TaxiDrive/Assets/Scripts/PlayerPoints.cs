@@ -8,6 +8,7 @@ public class PlayerPoints : MonoBehaviour
     public SystemMessages messages;
 
     private int points = 0;
+    private bool flag = false;
 
     void Start()
     {
@@ -16,18 +17,19 @@ public class PlayerPoints : MonoBehaviour
 
     public void AddPoints(float remainingTime, float remainingComfort)
     {
-        int time = (int)Math.Round(remainingTime);
-        int comfort = (int)remainingComfort;
-        int pointsEarned = time + comfort;
-        points += pointsEarned;
-
-        if (pointsEarned > 0)
+        if (flag)
         {
+            int time = (int)Math.Round(remainingTime);
+            int comfort = (int)remainingComfort;
+            int pointsEarned = time + comfort;
+            points += pointsEarned;
+
             pointsText.text = points.ToString() + " POINTS";
             string message = "You earned: " + pointsEarned + "points" + "\n"
                             + "Remaining Time: " + time + "s" + "\n"
                             + "Passengers Comfort: " + comfort;
             messages.WriteMessage(message);
         }
+        flag = !flag;
     }
 }

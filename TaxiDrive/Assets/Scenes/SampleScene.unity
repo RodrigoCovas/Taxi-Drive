@@ -344,8 +344,8 @@ GameObject:
   - component: {fileID: 234879034}
   - component: {fileID: 234879033}
   - component: {fileID: 234879032}
-  - component: {fileID: 234879035}
   - component: {fileID: 234879036}
+  - component: {fileID: 234879037}
   m_Layer: 0
   m_Name: EventSystem
   m_TagString: Untagged
@@ -403,19 +403,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &234879035
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 234879031}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 97355574c8ae5a342992cde3f499a46b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  timerText: {fileID: 1768782739}
 --- !u!114 &234879036
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -429,6 +416,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   messagesText: {fileID: 1586486112}
+--- !u!114 &234879037
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 234879031}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 572d7f9c012c4af4bbfbb41c66a1aa5c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  policeCarSpawner: {fileID: 2036858246}
+  buffSpawner: {fileID: 1675925686}
+  minSpawnInterval: 1
+  maxSpawnInterval: 3
 --- !u!1 &252687392
 GameObject:
   m_ObjectHideFlags: 0
@@ -2323,6 +2326,75 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 600, y: 300}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &1675925682
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1675925685}
+  - component: {fileID: 1675925683}
+  - component: {fileID: 1675925686}
+  m_Layer: 0
+  m_Name: BuffSpawnerObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1675925683
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1675925682}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8a764e3df864cd469cbfda7459b9d9b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  roadMeshCollider: {fileID: 1861560268}
+  playerTransform: {fileID: 205373798}
+  nearPlayerRadius: 300
+  minPlayerDistance: 50
+  maxAttempts: 1000
+  sampleRadius: 5
+--- !u!4 &1675925685
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1675925682}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.044494152, y: 1.4651756, z: 13.042673}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1675925686
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1675925682}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f5eb56fafa314840af51d9e8c3a91bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clockPrefab: {fileID: 154562, guid: a47b8422a3204d241b98abf5d002eb5b, type: 3}
+  drinkPrefab: {fileID: 1705129010167144, guid: da716aa8dae6b324890f317baf2edd1c, type: 3}
+  mirrorPrefab: {fileID: 3271373161921284639, guid: 8b6c11f874b695e42a9b019aac753ee7, type: 3}
+  alarmPrefab: {fileID: 4563459568915873646, guid: 4520bd06c7b1d204eabb14fcd197ad14, type: 3}
+  randomRoadPoint: {fileID: 1675925683}
+  spawnMode: 1
 --- !u!1 &1746371262
 GameObject:
   m_ObjectHideFlags: 0
@@ -2822,6 +2894,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2011403524}
   m_CullTransparentMesh: 1
+--- !u!114 &2036858246 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3524850697007109958, guid: 8a341c6622ec996478998f90f9733c80, type: 3}
+  m_PrefabInstance: {fileID: 981772290112972202}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2dc6e4d77fd184343bd5b1c7f2429ea4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &265393093660437995
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3205,7 +3288,11 @@ PrefabInstance:
     - target: {fileID: 4087686099103225635, guid: b3a11493d61286c4f83266f2e3100c41, type: 3}
       propertyPath: timer
       value: 
-      objectReference: {fileID: 234879035}
+      objectReference: {fileID: 5044652203519248308}
+    - target: {fileID: 4087686099103225635, guid: b3a11493d61286c4f83266f2e3100c41, type: 3}
+      propertyPath: messages
+      value: 
+      objectReference: {fileID: 234879036}
     - target: {fileID: 4087686099103225635, guid: b3a11493d61286c4f83266f2e3100c41, type: 3}
       propertyPath: comfortBar
       value: 
@@ -3259,6 +3346,10 @@ PrefabInstance:
       propertyPath: spriteOff
       value: 
       objectReference: {fileID: 1294829596}
+    - target: {fileID: 6651665286800607219, guid: 780a320632305454e89aa993737c5b96, type: 3}
+      propertyPath: messages
+      value: 
+      objectReference: {fileID: 234879036}
     - target: {fileID: 7649626134441871558, guid: 780a320632305454e89aa993737c5b96, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -3313,6 +3404,12 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 7649626134441907428, guid: 780a320632305454e89aa993737c5b96, type: 3}
       insertIndex: -1
       addedObject: {fileID: 5044652203519248307}
+    - targetCorrespondingSourceObject: {fileID: 7649626134441907428, guid: 780a320632305454e89aa993737c5b96, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5044652203519248308}
+    - targetCorrespondingSourceObject: {fileID: 7649626134441907428, guid: 780a320632305454e89aa993737c5b96, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5044652203519248316}
   m_SourcePrefab: {fileID: 100100000, guid: 780a320632305454e89aa993737c5b96, type: 3}
 --- !u!1 &5044652203519248291 stripped
 GameObject:
@@ -3333,6 +3430,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxComfort: 100
   comfortBar: {fileID: 1184635512}
+  messages: {fileID: 234879036}
 --- !u!114 &5044652203519248307
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3346,6 +3444,34 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pointsText: {fileID: 1528038453}
+  messages: {fileID: 234879036}
+--- !u!114 &5044652203519248308
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5044652203519248291}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97355574c8ae5a342992cde3f499a46b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timerText: {fileID: 1768782739}
+  messages: {fileID: 234879036}
+--- !u!114 &5044652203519248316
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5044652203519248291}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2408a4bc061cf584eb93908ccfa6a6ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  policeCarSpawner: {fileID: 2036858246}
   messages: {fileID: 234879036}
 --- !u!1001 &7281674043006917981
 PrefabInstance:
@@ -3477,3 +3603,4 @@ SceneRoots:
   - {fileID: 7281674043006917981}
   - {fileID: 127382731}
   - {fileID: 981772290112972202}
+  - {fileID: 1675925685}
