@@ -12,6 +12,7 @@ public class SphereSpawner : MonoBehaviour
     public EventTimer timer;
     public float challengeTime = 60f;
     public PlayerComfort comfortBar;
+    public PlayerPoints playerPoints;
 
     private void Start()
     {
@@ -38,7 +39,7 @@ public class SphereSpawner : MonoBehaviour
             {
                 startTrigger.sphereToControl = startSphere;
                 startTrigger.destructionTime = 3.0f; // Set destruction time for the start sphere
-                startTrigger.AssignTimerComfort(timer, challengeTime, comfortBar);
+                startTrigger.AssignTimerComfortPoints(timer, challengeTime, comfortBar, playerPoints);
             }
 
             // Wait until the start sphere is destroyed
@@ -62,7 +63,7 @@ public class SphereSpawner : MonoBehaviour
             {
                 endTrigger.sphereToControl = endSphere;
                 endTrigger.destructionTime = 5.0f; // Set destruction time for the end sphere
-                endTrigger.AssignTimerComfort(timer, challengeTime, comfortBar);
+                endTrigger.AssignTimerComfortPoints(timer, challengeTime, comfortBar, playerPoints);
             }
         }
         else

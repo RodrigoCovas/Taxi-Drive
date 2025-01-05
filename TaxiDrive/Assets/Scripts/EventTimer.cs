@@ -19,6 +19,9 @@ public class EventTimer : MonoBehaviour
         }
     }
 
+    public float GetCurrentTime()
+    { return currentTime; }
+
     public void StartEvent(float time)
     {
         eventActive = true;

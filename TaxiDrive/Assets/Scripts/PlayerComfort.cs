@@ -14,8 +14,12 @@ public class PlayerComfort : MonoBehaviour
         comfortBar.gameObject.SetActive(false);
     }
 
+    public float GetCurrentComfort()
+    { return currentComfort; }
+
     private void StartEvent()
     {
+        eventActive = true;
         currentComfort = maxComfort;
         comfortBar.UpdateComfortBar(currentComfort, maxComfort);
         comfortBar.gameObject.SetActive(true);
@@ -23,6 +27,7 @@ public class PlayerComfort : MonoBehaviour
 
     private void EndEvent()
     {
+        eventActive = false;
         comfortBar.gameObject.SetActive(false);
     }
 
@@ -59,12 +64,6 @@ public class PlayerComfort : MonoBehaviour
             Debug.Log("Collision Detected with: " + collision.gameObject.name);
             float damageAmount = 10f;
             TakeDamage(damageAmount);
-        }
-        else if (collision.gameObject.CompareTag("Clock"))
-        {
-            Debug.Log("Collision Detected with: " + collision.gameObject.name);
-            float healAmount = 20f;
-            TakeDamage(healAmount);
         }
     }
 }
