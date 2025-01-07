@@ -36,7 +36,11 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        GetInput();
+    }
 
+    void GetInput()
+    {
         float gasInput = Input.GetAxis("Vertical");
         float steeringInput = Input.GetAxis("Horizontal");
 

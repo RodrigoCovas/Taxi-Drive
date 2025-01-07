@@ -23,6 +23,11 @@ public class AIController : MonoBehaviour
 
     void Update()
     {
+        CalculateInput();
+    }
+
+    void CalculateInput()
+    {
         if (Vector3.Distance(transform.position, player.position) > detectionRange)
         {
             vehicleController.SetInputs(0, 0); // Stop if out of range
@@ -53,6 +58,7 @@ public class AIController : MonoBehaviour
         // Set inputs to the vehicle controller
         vehicleController.SetInputs(gasInput, steeringInput);
     }
+
     public void SetPlayerTransform(Transform playerTransform)
     {
         player = playerTransform;
